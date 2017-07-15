@@ -80,6 +80,7 @@ library(caret)
 library(e1071)
 dim(trainset)
 set.seed(6000)
+
 #Fit Random Forest Model
 rf =randomForest(class ~ ., ntree=100, data =trainset)
 plot(rf)
@@ -98,7 +99,7 @@ print(confusionMatrix(data = trainset$predicted.response,  reference = trainset$
 ?train
 
 #Rpart
-?train
+
 rpart_mod <-train(x=trainset,y=trainset$clas,method="rpart",tuneLength=5)
 plot(varImp(rpart_mod),main="RPART - Variable Importance Plot")
 rpart.plot(rpart_mod$finalModel) #<- creates the decision tree with better formatting
